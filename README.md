@@ -1,4 +1,4 @@
-# 3D model library
+# 3D model collection
 3D model collection of miniature parts for 1:78 (H0) scale RC models created in
 [openSCAD](https://www.openscad.org "openSCAD Homepage"). I do print these models
 on an [Anycubic Photon](https://www.anycubic.com/collections/anycubic-photon-3d-printers/products/anycubic-photon-3d-printer "Homepage") thus the `margin` variable
