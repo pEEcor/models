@@ -1,6 +1,7 @@
 
-bracket();
-*connector();
+
+*preview();
+print();
 
 //------------------------------------ settings ------------------------------//
 margin = 0.05;
@@ -11,14 +12,33 @@ outerDiameter = 2.5;        // shaft holder outer diameter
 shaftLength = 2.75;         // shaft holder length
 
 // arm
-armWidth = 1.5;             // y
-armHeight = 0.75 - margin;  // z
-armLength = armWidth + armHeight;              // x
-armDistance = 3;            // distance of arms (end to end)
+armWidth = 1.5 - margin;                    // y
+armHeight = 0.75 - margin;                  // z
+armLength = armWidth + armHeight + 0.25;    // x
+armDistance = 3;                            // distance of arms (end to end)
 
 // connector cube
-connectorEdge = armDistance - (2*armHeight) - margin;
+connectorEdge = armDistance - (2*armHeight) - (3*margin);
 connector = [connectorEdge, connectorEdge, connectorEdge];
+
+//--------------------------------- model previews ---------------------------//
+module preview() {
+    bracket();
+    rotate([0, 0, -135]){
+        connector();
+        rotate([90, 0, 0]) bracket();
+    }
+}
+
+module print() {
+    translate([0, 0, 1]) rotate([0, -45, 0])
+        translate([shaftLength + armLength - (armWidth/2), 0, 0]) bracket();
+        
+    translate([0, 4, 1]) rotate([0, -45, 0])
+        translate([shaftLength + armLength - (armWidth/2), 0, 0]) bracket();
+    translate([2, 7, 0]) rotate([0, -45, 0])
+        translate([connector.x/2, connector.y/2, connector.z/2]) connector();
+}
 
 //------------------------------------ bracket -------------------------------//
 module bracket() {
