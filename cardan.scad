@@ -22,33 +22,35 @@ connector = [connectorEdge, connectorEdge, connectorEdge];
 
 //------------------------------------ bracket -------------------------------//
 module bracket() {
-    difference() {
-        union() {
-            hull() {
-                // cylinder with shaft
-                rotate([0, 90, 0])
-                    cylinder(d = outerDiameter, h = shaftLength, $fn = 60);
-                // arm base to form hull
+    // set origin into turing point of bracket
+    translate([-shaftLength - armLength + (armWidth/2), 0, 0]) {
+        difference() {
+            // unite shaft and brackets
+            union() {
+                hull() {
+                    // cylinder with shaft
+                    rotate([0, 90, 0])
+                        cylinder(d = outerDiameter, h = shaftLength, $fn = 60);
+                    // arm base to form hull
+                    translate([0, -(armWidth)/2, -armDistance/2]) {
+                        for(z=[0, armDistance-armHeight]) {
+                            translate([shaftLength-1, 0, z])
+                                cube([1, armWidth, armHeight]);
+                        }
+                    }
+                }
+                // arms
                 translate([0, -armWidth/2, -armDistance/2]) {
                     for(z=[0, armDistance-armHeight]) {
-                        translate([shaftLength-1, 0, z])
-                            cube([1, armWidth, armHeight]);
+                        translate([shaftLength, 0, z]) arm();
                     }
                 }
             }
-            // arms
-            translate([0, -armWidth/2, -armDistance/2]) {
-                for(z=[0, armDistance-armHeight]) {
-                    translate([shaftLength, 0, z]) arm();
-                }
-            }
+            // shaft hole
+            rotate([0, 90, 0])
+                cylinder(d = shaftDiameter, h = shaftLength, $fn = 60);
         }
-        // shaft hole
-        rotate([0, 90, 0])
-            cylinder(d = shaftDiameter, h = shaftLength, $fn = 60);
     }
-
-
 }
 
 module arm() {
@@ -66,12 +68,16 @@ module arm() {
 
 //------------------------------------ connector -----------------------------//
 module connector() {
-    difference() {
-        cube(connector);
-        // holes
-        translate([0, connectorEdge/2, connectorEdge/2]) rotate([0, 90, 0])
-            cylinder(d = 0.5+(2*margin), h = connectorEdge, $fn = 60);
-        translate([connectorEdge/2, 0, connectorEdge/2]) rotate([-90, 0, 0])
-            cylinder(d = 0.5+(2*margin), h = connectorEdge, $fn = 60);
+    // set origin into center of cube
+    translate([-connector.x/2, -connector.y/2, -connector.z/2]) {
+        difference() {
+            cube(connector);
+            // holes
+            translate([0, connectorEdge/2, connectorEdge/2]) rotate([0, 90, 0])
+                cylinder(d = 0.5+(2*margin), h = connectorEdge, $fn = 60);
+            translate([connectorEdge/2, 0, connectorEdge/2]) rotate([-90, 0, 0])
+                cylinder(d = 0.5+(2*margin), h = connectorEdge, $fn = 60);
+        }
     }
+
 }
