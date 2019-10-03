@@ -10,8 +10,12 @@ such that all parts stick nicely together mechanically.
 Simple tweaks which can be easily applied to the models
 
 ### Cardan
-1. `length` wheelbase
-### Suspension
 1. `shaftDiameter` shaft diameter
 2. `outerDiameter` shaft holder outer diameter
 3. `shaftLength` shaft holder length
+### Suspension
+![alt text][cardan-image]
+1. `length` wheelbase
+
+
+[cardan-image]: ./images/suspension-200x200.png "Cardan"
