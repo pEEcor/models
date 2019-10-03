@@ -8,7 +8,7 @@ margin = 0.05;
 // bracket
 shaftDiameter = 1;          // shaft diameter
 outerDiameter = 2.5;        // shaft holder outer diameter
-shaftLength = 2.75;            // shaft holder length
+shaftLength = 2.75;         // shaft holder length
 
 // arm
 armWidth = 1.5;             // y

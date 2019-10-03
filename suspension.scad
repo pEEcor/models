@@ -7,14 +7,17 @@
 // steeringArm(left:bool)
 //
 
+//------------------------------------ settings ------------------------------//
+margin = 0.05;
+length = 18;
 
+//----------------------------------------------------------------------------//
 *allSetup();
 print();
 *suspensionMount();
-//------------------------------------ all items -----------------------------//
 
+//------------------------------------ all items -----------------------------//
 module all() {
-    length = 17;
     suspensionMount();
     translate([0, 10, 0]) steeringLink();
     translate([0, 20, 0]) top();
@@ -24,7 +27,6 @@ module all() {
 }
 
 module allSetup() {
-    length = 18;
     translate([-5, -2.5, 0]) suspensionMount();
     translate([-length/2, 0, 2]) bottom(length);
     translate([-length/2, 0, 6]) rotate([180, 0, 0]) top(length);
@@ -34,7 +36,6 @@ module allSetup() {
 }
 
 module print() {
-    length = 18.5;
     rotate([0, -45, 0])suspensionMount();
     rotate([0, -45, 0]) translate([0, 8, 0]) steeringLink(length);
     rotate([0, -45, 0]) translate([0, 12.5, 0]) top(length);
@@ -43,11 +44,7 @@ module print() {
     translate([-8, 10, 0]) rotate([45, -45, 0]) translate([1.5, 1, -1]) rotate([0, 0, 90]) steeringArm(false);
 }
 
-//------------------------------------ settings ------------------------------//
-margin = 0.05;
-
 //------------------------------------ Suspension ----------------------------//
-
 module suspensionMount() {
     // size of mounting plate
     plate = [10, 5, 1];
@@ -74,7 +71,6 @@ module bracket() {
 }
 
 //------------------------------- Steering Link ------------------------------//
-
 module steeringLink(length = 18.5) {
     steeringArmInfluence = 2;
     steeringLinkLength = length-steeringArmInfluence;
@@ -101,7 +97,6 @@ module steeringLink(length = 18.5) {
 }
 
 //------------------------------- top  ---------------------------------------//
-
 module top(length = 18.5) {
     holeDistance = length-2;
     base = [10, 3, 1];
@@ -137,7 +132,6 @@ module top(length = 18.5) {
 }
 
 //------------------------------- Bottom -------------------------------------//
-
 module bottom(length = 18.5) {
     base = [10, 3, 1];
     holeDistance = length-2;
@@ -176,7 +170,6 @@ module bottom(length = 18.5) {
 }
 
 //------------------------------- lenker -------------------------------------//
-
 module steeringArm(left = true) {
     height = 2 - (2 * margin);
     base = [2, 3, height];
@@ -222,7 +215,4 @@ module steeringArm(left = true) {
         else
             translate([0, -4.25, 0]) cylinder(d=1-margin, h = 4, $fn = 60);
     }
-
-
-
 }
