@@ -7,7 +7,8 @@ printer. This variable defines the amount which is subtracted on various parts
 such that all parts stick nicely together mechanically.
 
 ## Available models and tweaks
-Simple tweaks which can be easily applied to the models
+The listed variables underneath each model image can easily be tweaked inside the
+respective models `.scad` file to your liking.
 
 ### Cardan
 ![alt text][cardan-image]
