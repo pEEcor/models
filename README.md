@@ -4,7 +4,7 @@
 on an [Anycubic Photon](https://www.anycubic.com/collections/anycubic-photon-3d-printers/products/anycubic-photon-3d-printer "Homepage").
 Each source file of all models contains the variable `margin` which can be tweaked to yield good precision with your printer. This variable is pretweaked to fit the obove mentioned printer with [Elegoo Mars UV Resin](https://www.elegoo.com/product/elegoo-3d-rapid-resin-lcd-uv-curing-resin-405nm-standard-photopolymer-resin-for-lcd-3d-printing-500gram-black/ "Homepage"). The variable itself the amount in millimeters which is subtracted on various parts such that all parts stick nicely together mechanically.
 
-## Available models and tweaks
+## Available models and their options
 The listed variables underneath each model image can easily be tweaked inside the
 respective models `.scad` file to your liking.
 
